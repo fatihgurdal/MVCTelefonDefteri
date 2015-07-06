@@ -1,0 +1,28 @@
+﻿@using BusinessLayer;
+@model List<MVC_TelefonDefteri.Entities.Kisi>
+@{
+    ViewBag.Title = "Index";
+
+
+}
+<div class="jumbotron">
+    <h1>Hoş geldin ;)</h1>
+    <p>
+        Her programcının bir konuyu öğrenmek adına yaptığı ufak uygulamalardan biri olan telefon defteri uygulaması. Ziyaretçiler tüm kişileri görür ve ayrıntılarına bakabilir. Yöneticiler ise ondandan farklı olarak düzenleme, silme ve ekleme işlemleri yapmaktadır. Varsayılan yönetici bilgileri Admin/123456
+    </p>
+    <p><a class="btn btn-primary btn-lg" href="#" role="button">Tamam</a></p>
+</div>
+<h2>Telefon Listesi</h2>
+<div id="records">
+    @foreach (MVC_TelefonDefteri.Entities.Kisi K in Model)
+    {
+        @Html.Partial("_TekilKisi", K);
+            
+    }
+    @{
+        KisiYoneticisi KY = new KisiYoneticisi();
+        int Adet = KY.SayfaSayisi(Convert.ToInt16(Request.QueryString["P"]));
+    }
+    @Html.Partial("_Sayfalamalar", Adet)
+
+</div>

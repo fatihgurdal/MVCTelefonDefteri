@@ -1,0 +1,57 @@
+﻿@model MVC_TelefonDefteri.Entities.Kisi
+
+<div>
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Adi)
+
+            </th>
+            <td>
+                @Html.DisplayFor(model => model.Adi)
+
+            </td>
+            <td rowspan="5" class="col-md-3">
+                <a class="thumbnail">
+                    @{
+
+                        var yol = Url.Action("GetImg", "Home", new { id = Model.Id });
+                    }
+                    <img src="@yol" width="250" height="200">
+                </a>
+
+            </td>
+        </tr>
+
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Soyad)</th>
+            <td>@Html.DisplayFor(model => model.Soyad)</td>
+        </tr>
+
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.DogumTarihi)</th>
+            <td>@Html.DisplayFor(model => model.DogumTarihi)</td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Aciklama)</th>
+            <td>@Html.DisplayFor(model => model.Aciklama)</td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Telefonlar)</th>
+            <td>@Html.DisplayFor(model => model.Telefonlar, "TelefonlarTemp")</td>
+
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.EPostalar)</th>
+            <td colspan="2">@Html.DisplayFor(model => model.EPostalar, "EPostalarTemp")</td>
+        </tr>
+    </table>
+</div>
+<p>
+    <a href="@Url.Action("Index", "Home")" class="btn btn-warning">
+        <i class="glyphicon glyphicon-arrow-left"> </i>
+        Geri Dön !
+    </a>
+    
+</p>

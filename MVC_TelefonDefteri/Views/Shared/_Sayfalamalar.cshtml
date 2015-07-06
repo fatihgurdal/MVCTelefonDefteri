@@ -1,0 +1,37 @@
+﻿@model int
+           @{
+int Sayfa;
+if (Request.QueryString["P"]==null)
+{
+    Sayfa = 1;
+}
+else
+{
+    Sayfa = Convert.ToInt32(Request.QueryString["P"]);
+}
+string geri=string.Empty;
+string ileri=string.Empty;
+
+if (Sayfa < 2) { geri = "disabled"; }
+if (Sayfa >= @Model) { ileri = "disabled"; }
+}
+
+<nav>
+    <ul class="pagination">
+        <li class="@geri"><a href="?P=@(Sayfa-1)" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+        @for (int i = 1; i <= @Model; i++)
+        {
+            if (i==Sayfa)
+            {
+                <li class="active"><a href="?P=@i">@i</a></li>
+            }
+            else
+            {
+                <li><a href="?P=@i">@i</a></li>
+            }
+        }
+
+        <li class="@ileri"><a href="?P=@(Sayfa+1)" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
+
+    </ul>
+</nav>

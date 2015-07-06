@@ -1,0 +1,20 @@
+﻿@model MVC_TelefonDefteri.Entities.Kisi
+
+<!-- Tekil Post BAŞLADI-->
+<div class="panel panel-info">
+    @Html.Partial("_TekilKisiBolum1", Model)
+    <div class="panel-heading">
+        <div class="row">
+            <div class="col-md-5">
+                @Html.ActionLink("İncele", "Detail", "Home", new { K = Model.Id }, new { @class = "btn btn-success" })
+
+                @Html.ActionLink("Düzenle", "Edit", new { K = Model.Id }, new { @class = "btn btn-info" })
+
+                @Html.ActionLink("Sil", "Delete", new { K = Model.Id }, new { @class = "btn btn-danger" })
+
+                
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Tekil Post bitti-->

@@ -1,0 +1,25 @@
+﻿@using BusinessLayer;
+@model List<MVC_TelefonDefteri.Entities.Kisi>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminPage.cshtml";
+
+  
+}
+<div id="records" style="margin-top:15px">
+    @foreach (MVC_TelefonDefteri.Entities.Kisi K in Model)
+    {
+        @Html.Partial("_TekilKisiAdmin", K);
+
+    }
+    @{
+        KisiYoneticisi KY = new KisiYoneticisi();
+        int Sira = KY.SayfaSayisi(Convert.ToInt16(Request.QueryString["P"]));
+    }
+    @Html.Partial("_Sayfalamalar", Sira);
+
+</div>
+
+
+

@@ -1,0 +1,15 @@
+﻿@model ICollection<MVC_TelefonDefteri.Entities.EPosta>
+
+@foreach (MVC_TelefonDefteri.Entities.EPosta item in Model)
+{
+    <p>
+        @if (item.BirincilMi)
+        {
+          <a class="hint--left hint--bounce hint--info hint--rounded" data-hint="Birincil E-Posta">
+            <i class="glyphicon glyphicon-info-sign"></i>
+          </a>
+        }
+        <i class="glyphicon glyphicon-envelope"> </i>
+        @item.Adres
+    </p>
+}

@@ -1,0 +1,15 @@
+﻿@model ICollection<MVC_TelefonDefteri.Entities.Telefon>
+
+@foreach (MVC_TelefonDefteri.Entities.Telefon item in Model)
+{
+    <p>
+        @if (item.BirincilMi)
+        {
+            <a class="hint--left hint--bounce hint--info hint--rounded" data-hint="Birincil Telefon">
+                <i class="glyphicon glyphicon-info-sign"></i>
+            </a>
+        }
+    <i class=" glyphicon glyphicon-phone-alt"></i>
+    @item.No
+    </p>
+}

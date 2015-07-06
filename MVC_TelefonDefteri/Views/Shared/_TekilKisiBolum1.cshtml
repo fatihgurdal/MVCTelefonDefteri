@@ -1,0 +1,28 @@
+﻿@model MVC_TelefonDefteri.Entities.Kisi
+
+<div class="panel-heading">
+    <div>
+        <h3><strong>@Model.Adi @Model.Soyad</strong></h3>
+    </div>
+
+</div>
+<div class="panel-body">
+    <ul class="list-group active">
+        @foreach (MVC_TelefonDefteri.Entities.Telefon Tel in Model.Telefonlar)
+        {
+
+            <li class="list-group-item list-group-item-success">@Tel.No</li>
+
+        }
+
+    </ul>
+</div>
+<div class="panel-footer">
+    @foreach (MVC_TelefonDefteri.Entities.EPosta M in Model.EPostalar)
+    {
+        <a class="btn btn-info btn-xs" href="mailto:f.gurdal@hotmail.com.tr">
+            @M.Adres
+        </a>
+
+    }
+</div>
