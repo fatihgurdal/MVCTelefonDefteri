@@ -215,28 +215,33 @@ namespace MVC_TelefonDefteri.Controllers
         }
 
         [HttpPost]
-        public void MailEkle(EmailModel emailModels)
+        public PartialViewResult MailEkle(EmailModel emailModels)
         {
-     
-            KY.EPostaEkle(emailModels.Email, emailModels.KisiId);
+           
+            EPosta EP = KY.EPostaEkle(emailModels.Email, emailModels.KisiId);
+            ViewBag.EPostaID = EP.Id;
+            return PartialView("_EmailEklePartial", EP);
         }
         [HttpPost]
-        public void PhoneEkle(PhoneModel phoneModels)
-        {
-         
-            KY.TelEkle(phoneModels.Phone, phoneModels.KisiId);
+        public PartialViewResult PhoneEkle(PhoneModel phoneModels)
+        {         
+            Telefon Tel = KY.TelEkle(phoneModels.Phone, phoneModels.KisiId);
+            ViewBag.TelID = Tel.Id;
+            return PartialView("_TelefonEklePartial", Tel);
         }
         [HttpPost]
-        public void PhoneSil(int PhoneId)
+        public bool PhoneSil(TelModel id)
         {
-          
-            KY.KisiTelSil(PhoneId);
+
+            KY.KisiTelSil(id.TelId);
+            return true;
         }
         [HttpPost]
-        public void EmailSil(int EmailId)
+        public bool EmailSil(EPostaModel  id)
         {
-         
-            KY.KisiEPostaSil(EmailId);
+
+            KY.KisiEPostaSil(id.EPostaId);
+            return true;
             
         }
     }

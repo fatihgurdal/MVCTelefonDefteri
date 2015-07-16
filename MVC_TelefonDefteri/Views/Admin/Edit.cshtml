@@ -96,11 +96,14 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
+                    <div id="Telefonlar">
 
-                    @foreach (MVC_TelefonDefteri.Entities.Telefon item in Model.Telefonlar)
-                    {
-                        @Html.EditorFor(m => item)
-                    }
+                        @foreach (MVC_TelefonDefteri.Entities.Telefon item in Model.Telefonlar)
+                        {
+                             ViewBag.TelID=item.Id;
+                             @Html.EditorFor(m => item)
+                        }
+                    </div>
                     <div class="col-md-12" style="margin-top:15px;">
                         <div class="input-group">
                             <label class="control-label col-md-2 text-info" for="item_No">Yeni Telefon</label>
@@ -118,12 +121,15 @@
             </div>
             <div class="col-md-6">
                 <div class="form-group">
-                    @foreach (MVC_TelefonDefteri.Entities.EPosta item in Model.EPostalar)
-                    {
-                        ViewBag.EpostaID = item.Id;
-                        @Html.EditorFor(m => item)
+                    <div id="Epostalar">
 
-                    }
+                        @foreach (MVC_TelefonDefteri.Entities.EPosta item in Model.EPostalar)
+                        {
+                            ViewBag.EPostaID=item.Id;
+                            @Html.EditorFor(m => item)
+
+                        }
+                    </div>
                     <div class="col-md-12" style="margin-top:15px;">
                         <div class="input-group">
                             <label class="control-label col-md-2 text-info" for="item_No">Yeni Eposta</label>
@@ -181,12 +187,12 @@
             type: "POST",
             url: '@Url.Action("MailEkle", "Admin")',
             data: $.EmailModel,
-            dataType: "json",
+            dataType: "text",
             success: function (data) {
-                alert("Başarılı bir şekilde eklenedi");
+                $("#Epostalar").append(data).children().last().hide().fadeIn();
             }
         }).always(function () {
-            location.reload();
+            //location.reload();
         });
 
     });
@@ -205,13 +211,50 @@
             type: "POST",
             url: '@Url.Action("PhoneEkle","Admin")',
             data: $.PhoneModel,
-            dataType: "json",
+            dataType: "text",
             success: function (data) {
-                alert("Başarılı bir şekilde eklenedi");
+                $("#Telefonlar").append(data).children().last().hide().fadeIn();
+                
             }
         }).always(function () {
-            location.reload();
+            //location.reload();
         });
 
     });
+    function EpostaSil(id) {
+        $.EPostaDivId = "#Eposta" + id;
+        $.EPostaModel = {
+            "EPostaId": id
+        };
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("EmailSil", "Admin")',
+            data: $.EPostaModel,
+            dataType: "text",
+            success: function (data) {
+                
+                $($.EPostaDivId).fadeOut("slow");
+
+            }
+        })
+    }
+    function TelSil(id) {
+        $.TelDivId = "#Tel" + id;
+        $.TelModel = {
+            "TelId": id
+        };
+
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("PhoneSil", "Admin")',
+            data: $.TelModel,
+            dataType: "text",
+            success: function (data) {
+               
+                $($.TelDivId).fadeOut("slow");
+
+            }
+        })
+    }
+
 </script>

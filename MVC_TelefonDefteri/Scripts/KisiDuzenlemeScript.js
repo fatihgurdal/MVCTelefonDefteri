@@ -1,4 +1,4 @@
-alert("a");
+
 $("#MailEkleClick").click(function () {
 
     $.Email = $("#TekilMailInput").val();
@@ -13,9 +13,9 @@ $("#MailEkleClick").click(function () {
         type: "POST",
         url: '@Url.Action("MailEkle", "Admin")',
         data: $.EmailModel,
-        dataType: "json",
+        dataType: "text",
         success: function (data) {
-            alert("Başarılı bir şekilde eklenedi");
+            alert("Başarılı bir şekilde eklendi");
         }
     }).always(function () {
         location.reload();
@@ -37,12 +37,13 @@ $("#TelEkleClick").click(function () {
         type: "POST",
         url: '@Url.Action("PhoneEkle","Admin")',
         data: $.PhoneModel,
-        dataType: "json",
+        dataType: "text",
         success: function (data) {
-            alert("Başarılı bir şekilde eklenedi");
+            alert("aaa");
+            $("#Telefonlar").append(data).children().last().hide().fadeIn();
         }
     }).always(function () {
-        location.reload();
+       
     });
 
 });

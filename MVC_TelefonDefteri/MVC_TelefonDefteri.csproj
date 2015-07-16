@@ -133,6 +133,8 @@
     <Compile Include="Methods\ImageToByte.cs" />
     <Compile Include="Methods\KullaniciIslem.cs" />
     <Compile Include="Models\ContollerAction.cs" />
+    <Compile Include="Models\EPostaModel.cs" />
+    <Compile Include="Models\TelModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -158,6 +160,8 @@
     <Content Include="Views\Shared\EditorTemplates\Telefon.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\EPosta.cshtml" />
     <Content Include="Views\Shared\AdminLogin.cshtml" />
+    <Content Include="Views\Shared\_TelefonEklePartial.cshtml" />
+    <Content Include="Views\Shared\_EmailEklePartial.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

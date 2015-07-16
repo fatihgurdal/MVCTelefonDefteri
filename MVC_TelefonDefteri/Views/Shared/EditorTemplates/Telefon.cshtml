@@ -2,16 +2,18 @@
 
 @{
     Layout = null;
+    int TelefonId = ViewBag.TelID;
+    string TelDivId = "Tel" + TelefonId;
 }
 
 
-<div class="col-md-12">
+<div class="col-md-12" id="@TelDivId">
     <div class="input-group">
         @Html.LabelFor(Model => Model.No, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.EditorFor(Model => Model.No, new { htmlAttributes = new { @class = "form-control" } })
             <span class="input-group-btn">
-                <a href="" class="btn btn-danger">Sil</a>
+                <a onclick="TelSil(@TelefonId)" class="btn btn-danger">Sil</a>
             </span>
             @Html.ValidationMessageFor(Model => Model.No, "", new { @class = "text-danger" })
         </div>

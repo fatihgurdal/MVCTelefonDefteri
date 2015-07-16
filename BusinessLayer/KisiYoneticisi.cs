@@ -72,22 +72,29 @@ namespace BusinessLayer
         {
             return RepTel.First(x => x.Id == Id);
         }
-        public void TelEkle(string StrTel,int KulId)
+        public Telefon TelEkle(string StrTel,int KulId)
         {
             Kisi K = GetirKisiler(KulId);
-            K.Telefonlar.Add(new Telefon { 
-                No=StrTel
-            });
+            Telefon Tel = new Telefon
+            {
+                No = StrTel
+            };
+            K.Telefonlar.Add(Tel);
             Rep.UpdateSaveChanges();
+
+            return Tel;
         }
-        public void EPostaEkle(string StrEPosta, int KulId)
+        public EPosta EPostaEkle(string StrEPosta, int KulId)
         {
             Kisi K = GetirKisiler(KulId);
-            K.EPostalar.Add(new EPosta
+            EPosta EP = new EPosta
             {
                 Adres = StrEPosta
-            });
+            };
+            K.EPostalar.Add(EP);
             Rep.UpdateSaveChanges();
+
+            return EP;
         }
         
         public Kisi KisiGuncelle(Kisi collection, byte[] ImageUpload)
